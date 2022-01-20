@@ -8,7 +8,8 @@ Screen shot:
 ![Simulator Screen Shot - iPhone 13 Pro Max - 2022-01-20 at 11 48 26](https://user-images.githubusercontent.com/97151860/150284880-bf6ed5b5-9ed6-44cb-8ae3-c27123e9f678.png)
 ![Simulator Screen Shot - iPhone 13 Pro Max - 2022-01-20 at 11 49 08](https://user-images.githubusercontent.com/97151860/150284911-c89885ac-c6d0-4945-9d62-9608c1e19e58.png)
 ![Simulator Screen Shot - iPhone 13 Pro Max - 2022-01-20 at 11 50 05](https://user-images.githubusercontent.com/97151860/150284917-bcf0ffc1-ea72-4070-acdd-32dc7e8b12b4.png)
-![Simulator Screen Shot - iPhone 13 Pro Max - 2022-01-20 at 10 50 27](https://user-images.githubusercontent.com/97151860/150284963-244ce268-51c0-4cdf-9255-8d2eb4e5736f.png)
+![Simulator Screen Shot - iPhone 13 Pro Max - 2022-01-20 at 14 27 00](https://user-images.githubusercontent.com/97151860/150306075-7f28c884-b225-42ce-98e0-ee366bc464e2.png)
+
 
 Customization :
 -> I add the eye in password so that user can see his password and hide it to.
