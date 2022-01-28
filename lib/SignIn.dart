@@ -113,9 +113,6 @@ class _MySignInPageState extends State<MySignInPage> {
                               if (password.length < 8) {
                                 return "enter the password more than 8 character";
                               }
-                              // if( alphanumeric.hasMatch(password)){
-                              //   return "invalid password";
-                              // }
                             },
                             style: TextStyle(color: Colors.white),
                             cursorColor: Colors.white,
