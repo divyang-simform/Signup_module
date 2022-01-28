@@ -140,7 +140,7 @@ class _MyforgotPasspageState extends State<MyforgotPasspage> {
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),
                               ),
-                              prefixIcon: Icon(
+                              prefixIcon: const Icon(
                                 Icons.lock_outline,
                                 color: Colors.white,
                               ),
