@@ -243,6 +243,5 @@ class _MyforgotPasspageState extends State<MyforgotPasspage> {
         ],
       ),
     );
-    // ),
   }
 }
