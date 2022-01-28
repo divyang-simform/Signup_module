@@ -1,6 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:signup_module/SignIn.dart';
+import 'package:signup_module/controlbox.dart';
+import 'package:signup_module/otherloginmethod.dart';
+
+import 'imageScr.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: const MySignInPage(),
     );
   }
 }
@@ -31,9 +36,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool eye = false;
 
-  void vaw() {
+  void hidepassword() {
     setState(() {
       eye = !eye;
     });
@@ -45,16 +51,16 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Stack(
         alignment: Alignment.center,
         children: [
-        Container(
-          height: MediaQuery.of(context).size.height * 1,
-          width: MediaQuery.of(context).size.height * 1,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("asset/image/background_image.jpeg"),
-              fit: BoxFit.cover,
+          Container(
+            height: MediaQuery.of(context).size.height * 1,
+            width: MediaQuery.of(context).size.height * 1,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(BgImage),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-    ),
           // alignment: Alignment.center,
           // child:
 
@@ -64,19 +70,19 @@ class _MyHomePageState extends State<MyHomePage> {
               height: MediaQuery.of(context).size.height * .7,
               width: MediaQuery.of(context).size.width * .9,
               decoration: BoxDecoration(
-    color: Colors.grey.shade200.withOpacity(0.5),),
+                color: Colors.grey.shade200.withOpacity(0.5),
+              ),
 
-    // color: Colors.yellow,
-    //               color: Color.fromRGBO(255, 255, 255, 0.2)),
+              // color: Colors.yellow,
+              //               color: Color.fromRGBO(255, 255, 255, 0.2)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "SIGN UP",
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Ktextcolor,
                         fontSize: 30,
-                        fontFamily: "san ferif",
                         fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
@@ -86,25 +92,24 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: MediaQuery.of(context).size.width * .8,
                     child: TextField(
                       maxLength: 15,
-                      style: TextStyle(color: Colors.white),
-                      cursorColor: Colors.white,
+                      style: TextStyle(color: Ktextcolor),
+                      cursorColor: Ktextcolor,
                       decoration: InputDecoration(
                           counter: Offstage(),
                           fillColor: Color.fromRGBO(0, 0, 0, 0.3),
                           filled: true,
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(color: Colors.white),
+                            borderSide: BorderSide(color: Kbordercolor),
                           ),
                           hintText: "Your Name",
-                          hintStyle: TextStyle(color: Colors.white),
+                          hintStyle: TextStyle(color: Ktextcolor),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
-
                           prefixIcon: Icon(
                             Icons.account_circle_outlined,
-                            color: Colors.white,
+                            color: Kiconcolor,
                           )),
                     ),
                   ),
@@ -115,23 +120,23 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: MediaQuery.of(context).size.width * .8,
                     child: TextField(
                       keyboardType: TextInputType.emailAddress,
-                      style: TextStyle(color: Colors.white),
-                      cursorColor: Colors.white,
+                      style: TextStyle(color: Ktextcolor),
+                      cursorColor: Ktextcolor,
                       decoration: InputDecoration(
                           fillColor: Color.fromRGBO(0, 0, 0, 0.3),
                           filled: true,
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(color: Colors.white),
+                            borderSide: BorderSide(color: Kbordercolor),
                           ),
                           hintText: "E-mail",
-                          hintStyle: TextStyle(color: Colors.white),
+                          hintStyle: TextStyle(color: Ktextcolor),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
                           prefixIcon: Icon(
                             Icons.mail_outline,
-                            color: Colors.white,
+                            color: Kiconcolor,
                           )),
                     ),
                   ),
@@ -142,35 +147,35 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: MediaQuery.of(context).size.width * .8,
                     child: TextField(
                       obscureText: eye,
-                      style: TextStyle(color: Colors.white),
-                      cursorColor: Colors.white,
+                      style: TextStyle(color: Ktextcolor),
+                      cursorColor: Ktextcolor,
                       decoration: InputDecoration(
                         fillColor: Color.fromRGBO(0, 0, 0, 0.3),
                         filled: true,
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(color: Colors.white),
+                          borderSide: BorderSide(color: Kbordercolor),
                         ),
                         hintText: "Password",
-                        hintStyle: TextStyle(color: Colors.white),
+                        hintStyle: TextStyle(color: Ktextcolor),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
                         prefixIcon: Icon(
                           Icons.lock_outline,
-                          color: Colors.white,
+                          color: Kiconcolor,
                         ),
                         suffixIcon: IconButton(
                           icon: eye == true
                               ? Icon(
                                   Icons.remove_red_eye_outlined,
-                                  color: Colors.white,
+                                  color: Kiconcolor,
                                 )
                               : Icon(
                                   Icons.remove_red_eye,
-                                  color: Colors.white,
+                                  color: Kiconcolor,
                                 ),
-                          onPressed: vaw,
+                          onPressed: hidepassword,
                         ),
                       ),
                     ),
@@ -187,47 +192,19 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {},
                     child: Text(
                       "Sign Up",
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Ktextcolor),
                     ),
                   ),
                   SizedBox(
                     height: 40,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      FloatingActionButton(
-                        onPressed: () {},
-                        child: Image.asset(
-                            "asset/image/Google_Plus_icon_(2015-2019).svg.png"),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          left: 20,
-                          right: 20,
-                        ),
-                        child: FloatingActionButton(
-                          onPressed: () {},
-                          child: Image.asset(
-                              "asset/image/834722_facebook_icon.png"),
-                        ),
-                      ),
-                      FloatingActionButton(
-                        onPressed: () {},
-                        child: Image.asset(
-                            "asset/image/294709_circle_twitter_icon.png"),
-                      ),
-                    ],
-                  ),
+                  Otherloginpage(),
                 ],
               ),
-            // ),
-        ),
+            ),
           ),
-    ],
+        ],
       ),
-      // ),
     );
   }
 }
