@@ -1,11 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:signup_module/SignIn.dart';
-import 'package:signup_module/controlbox.dart';
-import 'package:signup_module/otherloginmethod.dart';
-
-import 'imageScr.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MySignInPage(),
+      home: const MyHomePage(),
     );
   }
 }
@@ -36,10 +31,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool eye = false;
 
-  void hidepassword() {
+  void vaw() {
     setState(() {
       eye = !eye;
     });
