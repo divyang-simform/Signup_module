@@ -1,0 +1,1 @@
+const BgImage = "asset/image/background_image.jpeg";

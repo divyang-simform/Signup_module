@@ -1,6 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'SignIn.dart';
+import 'controlbox.dart';
+import 'otherloginmethod.dart';
+
+import 'imageScr.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,13 +18,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const MySignInPage());
   }
 }
 
@@ -31,11 +35,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool eye = false;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  bool showPassword = false;
 
-  void vaw() {
+  void hidepassword() {
     setState(() {
-      eye = !eye;
+      showPassword = !showPassword;
     });
   }
 
@@ -45,16 +50,14 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Stack(
         alignment: Alignment.center,
         children: [
-        Container(
-          height: MediaQuery.of(context).size.height * 1,
-          width: MediaQuery.of(context).size.height * 1,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("asset/image/background_image.jpeg"),
-              fit: BoxFit.cover,
+          Container(
+            height: MediaQuery.of(context).size.height * 1,
+            width: MediaQuery.of(context).size.height * 1,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(BgImage), fit: BoxFit.cover),
             ),
           ),
-    ),
           // alignment: Alignment.center,
           // child:
 
@@ -63,171 +66,105 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Container(
               height: MediaQuery.of(context).size.height * .7,
               width: MediaQuery.of(context).size.width * .9,
-              decoration: BoxDecoration(
-    color: Colors.grey.shade200.withOpacity(0.5),),
-
-    // color: Colors.yellow,
-    //               color: Color.fromRGBO(255, 255, 255, 0.2)),
+              decoration:
+                  BoxDecoration(color: Colors.grey.shade200.withOpacity(0.5)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "SIGN UP",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30,
-                        fontFamily: "san ferif",
-                        fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 40,
-                  ),
+                  Text("SIGN UP",
+                      style: TextStyle(
+                          color: Ktextcolor,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold)),
+                  SizedBox(height: 40),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .8,
                     child: TextField(
                       maxLength: 15,
-                      style: TextStyle(color: Colors.white),
-                      cursorColor: Colors.white,
+                      style: TextStyle(color: Ktextcolor),
+                      cursorColor: Ktextcolor,
                       decoration: InputDecoration(
-                          counter: Offstage(),
-                          fillColor: Color.fromRGBO(0, 0, 0, 0.3),
-                          filled: true,
-                          focusedBorder: OutlineInputBorder(
+                        counter: Offstage(),
+                        fillColor: Ktextfeildbgcolor,
+                        filled: true,
+                        focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                          hintText: "Your Name",
-                          hintStyle: TextStyle(color: Colors.white),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-
-                          prefixIcon: Icon(
-                            Icons.account_circle_outlined,
-                            color: Colors.white,
-                          )),
+                            borderSide: BorderSide(color: Kbordercolor)),
+                        hintText: "Your Name",
+                        hintStyle: TextStyle(color: Ktextcolor),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        prefixIcon: Icon(Icons.account_circle_outlined,
+                            color: Kiconcolor),
+                      ),
                     ),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  SizedBox(height: 20),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .8,
                     child: TextField(
                       keyboardType: TextInputType.emailAddress,
-                      style: TextStyle(color: Colors.white),
-                      cursorColor: Colors.white,
+                      style: TextStyle(color: Ktextcolor),
+                      cursorColor: Ktextcolor,
                       decoration: InputDecoration(
-                          fillColor: Color.fromRGBO(0, 0, 0, 0.3),
-                          filled: true,
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                          hintText: "E-mail",
-                          hintStyle: TextStyle(color: Colors.white),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          prefixIcon: Icon(
-                            Icons.mail_outline,
-                            color: Colors.white,
-                          )),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * .8,
-                    child: TextField(
-                      obscureText: eye,
-                      style: TextStyle(color: Colors.white),
-                      cursorColor: Colors.white,
-                      decoration: InputDecoration(
-                        fillColor: Color.fromRGBO(0, 0, 0, 0.3),
+                        fillColor: Ktextfeildbgcolor,
                         filled: true,
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        hintText: "Password",
-                        hintStyle: TextStyle(color: Colors.white),
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide(color: Kbordercolor)),
+                        hintText: "E-mail",
+                        hintStyle: TextStyle(color: Ktextcolor),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        prefixIcon: Icon(
-                          Icons.lock_outline,
-                          color: Colors.white,
-                        ),
-                        suffixIcon: IconButton(
-                          icon: eye == true
-                              ? Icon(
-                                  Icons.remove_red_eye_outlined,
-                                  color: Colors.white,
-                                )
-                              : Icon(
-                                  Icons.remove_red_eye,
-                                  color: Colors.white,
-                                ),
-                          onPressed: vaw,
-                        ),
+                            borderRadius: BorderRadius.circular(20)),
+                        prefixIcon: Icon(Icons.mail_outline, color: Kiconcolor),
                       ),
                     ),
                   ),
+                  SizedBox(height: 20),
                   SizedBox(
-                    height: 20,
+                    width: MediaQuery.of(context).size.width * .8,
+                    child: TextField(
+                      obscureText: showPassword,
+                      style: TextStyle(color: Ktextcolor),
+                      cursorColor: Ktextcolor,
+                      decoration: InputDecoration(
+                        fillColor: Ktextfeildbgcolor,
+                        filled: true,
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide(color: Kbordercolor)),
+                        hintText: "Password",
+                        hintStyle: TextStyle(color: Ktextcolor),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        prefixIcon: Icon(Icons.lock_outline, color: Kiconcolor),
+                        suffixIcon: IconButton(
+                            icon: showPassword == true
+                                ? Icon(Icons.remove_red_eye_outlined,
+                                    color: Kiconcolor)
+                                : Icon(Icons.remove_red_eye, color: Kiconcolor),
+                            onPressed: hidepassword),
+                      ),
+                    ),
                   ),
+                  SizedBox(height: 20),
                   MaterialButton(
-                    color: Color.fromRGBO(0, 0, 0, 0.3),
+                    color: Ktextfeildbgcolor,
                     minWidth: MediaQuery.of(context).size.width * .8,
                     height: 55,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0))),
                     onPressed: () {},
-                    child: Text(
-                      "Sign Up",
-                      style: TextStyle(color: Colors.white),
-                    ),
+                    child: Text("Sign Up", style: TextStyle(color: Ktextcolor)),
                   ),
-                  SizedBox(
-                    height: 40,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      FloatingActionButton(
-                        onPressed: () {},
-                        child: Image.asset(
-                            "asset/image/Google_Plus_icon_(2015-2019).svg.png"),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          left: 20,
-                          right: 20,
-                        ),
-                        child: FloatingActionButton(
-                          onPressed: () {},
-                          child: Image.asset(
-                              "asset/image/834722_facebook_icon.png"),
-                        ),
-                      ),
-                      FloatingActionButton(
-                        onPressed: () {},
-                        child: Image.asset(
-                            "asset/image/294709_circle_twitter_icon.png"),
-                      ),
-                    ],
-                  ),
+                  SizedBox(height: 40),
+                  Otherloginpage(),
                 ],
               ),
-            // ),
-        ),
+            ),
           ),
-    ],
+        ],
       ),
-      // ),
     );
   }
 }
