@@ -44,11 +44,9 @@ class _MyforgotPasspageState extends State<MyforgotPasspage> {
           Container(
             height: MediaQuery.of(context).size.height * 1,
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("asset/image/background_image.jpeg"),
-                fit: BoxFit.cover,
-              ),
+                  image: AssetImage(BgImage), fit: BoxFit.cover),
             ),
           ),
           ClipRRect(
@@ -61,24 +59,16 @@ class _MyforgotPasspageState extends State<MyforgotPasspage> {
                 child: Form(
                   key: formKey,
                   child: SingleChildScrollView(
-
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(
-                          height: 70,
-                        ),
-                        Text(
-                          "Forgot Password",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30,
-                              fontFamily: "san ferif",
-                              fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          height: 70,
-                        ),
+                        const SizedBox(height: 70),
+                        const Text("Forgot Password",
+                            style: TextStyle(
+                                color: Ktextcolor,
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold)),
+                        const SizedBox(height: 70),
                         SizedBox(
                           width: MediaQuery.of(context).size.width * .8,
                           child: TextFormField(
@@ -89,35 +79,31 @@ class _MyforgotPasspageState extends State<MyforgotPasspage> {
                               }
                               return null;
                             },
-                            style: TextStyle(color: Colors.white),
-                            cursorColor: Colors.white,
+                            style: TextStyle(color: Ktextcolor),
+                            cursorColor: Ktextcolor,
                             decoration: InputDecoration(
-                                counter: Offstage(),
-                                fillColor: Color.fromRGBO(0, 0, 0, 0.3),
+                                counter: const Offstage(),
+                                fillColor: Ktextfeildbgcolor,
                                 filled: true,
                                 focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(color: Colors.white),
-                                ),
+                                    borderRadius: BorderRadius.circular(20),
+                                    borderSide:
+                                        const BorderSide(color: Kbordercolor)),
                                 hintText: "Your Name",
-                                hintStyle: TextStyle(color: Colors.white),
+                                hintStyle: const TextStyle(color: Ktextcolor),
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                prefixIcon: Icon(
-                                  Icons.account_circle_outlined,
-                                  color: Colors.white,
-                                )),
+                                    borderRadius: BorderRadius.circular(20)),
+                                prefixIcon: const Icon(
+                                    Icons.account_circle_outlined,
+                                    color: Kiconcolor)),
                           ),
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
+                        const SizedBox(height: 20),
                         SizedBox(
                           width: MediaQuery.of(context).size.width * .8,
                           child: TextFormField(
-                            controller: controller,
-                            obscureText: ey,
+                            controller: Password,
+                            obscureText: showPassword,
                             validator: (password) {
                               if (password == null || password.isEmpty) {
                                 return "Please enter your Password.";
@@ -126,96 +112,74 @@ class _MyforgotPasspageState extends State<MyforgotPasspage> {
                                 return "enter the password more than 8 character";
                               }
                             },
-                            style: TextStyle(color: Colors.white),
-                            cursorColor: Colors.white,
+                            style: const TextStyle(color: Ktextcolor),
+                            cursorColor: Ktextcolor,
                             decoration: InputDecoration(
-                              fillColor: Color.fromRGBO(0, 0, 0, 0.3),
+                              fillColor: Ktextfeildbgcolor,
                               filled: true,
                               focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                                borderSide: BorderSide(color: Colors.white),
-                              ),
+                                  borderRadius: BorderRadius.circular(20),
+                                  borderSide:
+                                      const BorderSide(color: Kbordercolor)),
                               hintText: "New Password",
-                              hintStyle: TextStyle(color: Colors.white),
+                              hintStyle: const TextStyle(color: Ktextcolor),
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              prefixIcon: const Icon(
-                                Icons.lock_outline,
-                                color: Colors.white,
-                              ),
+                                  borderRadius: BorderRadius.circular(20)),
+                              prefixIcon: const Icon(Icons.lock_outline,
+                                  color: Kiconcolor),
                               suffixIcon: IconButton(
-                                icon: ey == true
-                                    ? Icon(
-                                        Icons.remove_red_eye_outlined,
-                                        color: Colors.white,
-                                      )
-                                    : Icon(
-                                        Icons.remove_red_eye,
-                                        color: Colors.white,
-                                      ),
-                                onPressed: va,
+                                icon: showPassword == true
+                                    ? const Icon(Icons.remove_red_eye_outlined,
+                                        color: Kiconcolor)
+                                    : const Icon(Icons.remove_red_eye,
+                                        color: Kiconcolor),
+                                onPressed: Hidepassword,
                               ),
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
+                        const SizedBox(height: 20),
                         SizedBox(
                           width: MediaQuery.of(context).size.width * .8,
                           child: TextFormField(
-                            obscureText: eye,
-                            validator: (Cpassword) {
-                              if (Cpassword == null || Cpassword.isEmpty) {
+                            obscureText: showPassword1,
+                            validator: (password1) {
+                              if (password1 == null || password1.isEmpty) {
                                 return "Please enter your Password.";
                               }
-                              if (Cpassword.length < 8) {
+                              if (password1.length < 8) {
                                 return "enter the password more than 8 character";
                               }
-                              if (Cpassword != controller.text) {
+                              if (password1 != Password.text) {
                                 return "both the the Password is not same";
                               }
                             },
-                            style: TextStyle(color: Colors.white),
-                            cursorColor: Colors.white,
+                            style: const TextStyle(color: Ktextcolor),
+                            cursorColor: Ktextcolor,
                             decoration: InputDecoration(
-                              fillColor: Color.fromRGBO(0, 0, 0, 0.3),
+                              fillColor: Ktextfeildbgcolor,
                               filled: true,
                               focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                                borderSide: BorderSide(color: Colors.white),
-                              ),
+                                  borderRadius: BorderRadius.circular(20),
+                                  borderSide: BorderSide(color: Kbordercolor)),
                               hintText: "New Password",
-                              hintStyle: TextStyle(color: Colors.white),
+                              hintStyle: const TextStyle(color: Ktextcolor),
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              prefixIcon: Icon(
-                                Icons.lock_outline,
-                                color: Colors.white,
-                              ),
+                                  borderRadius: BorderRadius.circular(20)),
+                              prefixIcon: const Icon(Icons.lock_outline,
+                                  color: Kiconcolor),
                               suffixIcon: IconButton(
-                                icon: eye == true
-                                    ? Icon(
-                                        Icons.remove_red_eye_outlined,
-                                        color: Colors.white,
-                                      )
-                                    : Icon(
-                                        Icons.remove_red_eye,
-                                        color: Colors.white,
-                                      ),
-                                onPressed: vaw,
-                              ),
+                                  icon: showPassword1 == true
+                                      ? const Icon(
+                                          Icons.remove_red_eye_outlined,
+                                          color: Kiconcolor)
+                                      : const Icon(Icons.remove_red_eye,
+                                          color: Kiconcolor),
+                                  onPressed: Hidepassword1),
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
+                        const SizedBox(height: 28),
                         MaterialButton(
                           color: Color.fromRGBO(0, 0, 0, 0.3),
                           minWidth: MediaQuery.of(context).size.width * .8,
@@ -228,10 +192,8 @@ class _MyforgotPasspageState extends State<MyforgotPasspage> {
                               // Process data.
                             }
                           },
-                          child: Text(
-                            "Change Password",
-                            style: TextStyle(color: Colors.white),
-                          ),
+                          child: Text("Change Password",
+                              style: TextStyle(color: Ktextcolor)),
                         ),
                       ],
                     ),
